@@ -37,7 +37,7 @@ public class Die extends GameObject {
 		super(X, Y, DIE_WIDTH, DIE_HEIGHT);
 		this.sides = sides;
 		rand = new Random();
-		name = "d"+sides;
+		this.name = "d"+sides;
 	}
 	
 	public void shake(){
@@ -53,5 +53,6 @@ public class Die extends GameObject {
 		Log.v("Die result",""+result);
 		
 	}
+
 
 }

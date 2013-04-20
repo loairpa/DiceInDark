@@ -56,35 +56,33 @@ public class DiceScreen extends GLScreen {
 		dice.add(new Die(10));
 		dice.add(new Die(12)); 
 		dice.add(new Die(20));
+		dice.add(new Die(100));
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
    public void update(float deltaTime) {
-	
-		float accelX = game.getInput().getAccelX();
-		float accelY = game.getInput().getAccelY();
+		
 		if(stateTime==0 && state!=DICE_SHAKING)
 			game.getAudio().speakOut(""+dice.get(currentDie).name);
+		
 		stateTime+=deltaTime;
-		if(Math.abs(accelX)>10 ||Math.abs(accelY)>10){
-			dice.get(currentDie).shake();
-			state=DICE_SHAKING;
-			stateTime=0;
-		}
-		else if (state == DICE_SHAKING && stateTime >1f){
-			state = DICE_THROW;
-			dice.get(currentDie).thrown();
-			game.getAudio().speakOut("Result, "+dice.get(currentDie).result);
-			return;
-		}
-		else{
-			List<GestureEvent> gestureEvents = game.getInput().getGestureEvents();
-		      game.getInput().getKeyEvents();
-		      int len = gestureEvents.size();
-		      for(int i = 0; i<len; i++){
-		    	  GestureEvent event = gestureEvents.get(i);  
+		float accelX = game.getInput().getAccelX();
+		float accelY = game.getInput().getAccelY();
 
+
+		switch(state){
+		case DICE_READY:
+			if(Math.abs(accelX)>10 ||Math.abs(accelY)>10){
+				dice.get(currentDie).shake();
+				state=DICE_SHAKING;
+				Assets.playSound(Assets.shakeDie);
+				return;
+			}
+			List<GestureEvent> gestureEvents = game.getInput().getGestureEvents();
+		    int len = gestureEvents.size();
+		    for(int i = 0; i<len; i++){
+		    	GestureEvent event = gestureEvents.get(i);  
 		    	  if(event.type == GestureEvent.FLING_LEFT){
 		    		  currentDie--;
 		    		  if(currentDie<0)
@@ -92,7 +90,6 @@ public class DiceScreen extends GLScreen {
 		    		  
 		    		  game.getAudio().speakOut(dice.get(currentDie).name);
 		    	  }
-
 		    	  if(event.type == GestureEvent.FLING_RIGHT){
 		    		  currentDie++;
 		    		  if(currentDie>dice.size()-1)
@@ -111,6 +108,28 @@ public class DiceScreen extends GLScreen {
 		    			  game.getAudio().speakOut(dice.get(currentDie).name+". Result, "+dice.get(currentDie).result);
 		    	  }
 		      }
+		return;
+		
+		case DICE_SHAKING:
+			if(Math.abs(accelX)>10 ||Math.abs(accelY)>10){
+				dice.get(currentDie).shake();
+				stateTime=0;
+
+			}
+
+			if(stateTime>.5f){
+			Assets.playSound(Assets.rollDie);
+			state = DICE_THROW;
+			}			
+			return;
+			
+		case DICE_THROW:
+			if (stateTime >2f){
+			dice.get(currentDie).thrown();
+			game.getAudio().speakOut("Result, "+dice.get(currentDie).result);
+			state = DICE_READY;
+			}
+			return;
 		}
 
 	}

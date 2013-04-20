@@ -1,5 +1,5 @@
 /*    Dice in the dark. D & D app for the blind and seeing impaired,
-*    Copyright (C) <2013r>  <Lovisa Irpa Helgadottir>
+*    Copyright (C) 2013  Lovisa Irpa Helgadottir
 *
 *    This program is free software: you can redistribute it and/or modify
 *    it under the terms of the GNU General Public License as published by
@@ -98,7 +98,7 @@ public class MainMenuScreen extends GLScreen {
     private void updateHelp(){
   	  
       game.getAudio().speakOut("Fling right or left to select die. Shake to juggle die. " +
-      		"Stop Shaking to throw die. Tap screen for repetition of result. Double tap for main menu ");
+      		"Stop Shaking to roll die. Tap screen for repetition of result. Double tap for main menu ");
   	  state = GAME_RUNNING;
     }
     
