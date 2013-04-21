@@ -49,7 +49,7 @@ public class DiceRender {
         switch(dice.state){
         case DiceScreen.DICE_READY:
         	direction=0;
-		   if(die.hasResult)
+		   if(die.hasResult && die.sides==4)
 			   batcher.drawSprite(die.position.x+4, die.position.y+7, FRUSTUM_WIDTH, FRUSTUM_HEIGHT, Assets.D4.get(die.result-1));
 		   else
 			   batcher.drawSprite(die.position.x+4, die.position.y+7,FRUSTUM_WIDTH,  FRUSTUM_HEIGHT, Assets.D4.get(0));
