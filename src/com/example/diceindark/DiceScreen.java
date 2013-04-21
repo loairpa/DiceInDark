@@ -39,7 +39,7 @@ public class DiceScreen extends GLScreen {
 
 	Camera2D guiCam;
 	SpriteBatcher batcher;
-	
+	DiceRender renderer;
 	List<Die> dice;
 	int state;
 	int currentDie =0;
@@ -58,6 +58,7 @@ public class DiceScreen extends GLScreen {
 		dice.add(new Die(20));
 		dice.add(new Die(100));
 		// TODO Auto-generated constructor stub
+		renderer = new DiceRender(glGraphics, batcher, this);
 	}
 
 	@Override
@@ -136,18 +137,10 @@ public class DiceScreen extends GLScreen {
 
 	@Override
 	public void present(float deltaTime) {
-	 	GL10 gl = glGraphics.getGL();        
+		GL10 gl = glGraphics.getGL();
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        guiCam.setViewportAndMatrices();
-        
         gl.glEnable(GL10.GL_TEXTURE_2D);
-        
-        batcher.beginBatch(Assets.background);
-        batcher.drawSprite(160, 240, 320, 480, Assets.backgroundRegion);
-        batcher.endBatch();
-
-        
-        gl.glDisable(GL10.GL_BLEND);
+        renderer.render();
 
 	}
 

@@ -16,7 +16,11 @@
 */
 package com.example.diceindark;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.framework.Sound;
+import com.example.framework.gl.Animation;
 import com.example.framework.gl.Texture;
 import com.example.framework.gl.TextureRegion;
 import com.example.framework.impl.GLGame;
@@ -25,23 +29,39 @@ import com.example.framework.impl.GLGame;
 
 public class Assets {
 
-		public static Texture background;
-	    public static TextureRegion backgroundRegion;
+		public static Texture mainMenuScreen;
+	    public static TextureRegion mainMenuScreenRegion;
 	    
+	    public static Texture items;
+	    
+	    
+	    public static List<TextureRegion> D4;
+	    public static Animation D4_anim;
 	    public static Sound shakeDie;
 	    public static Sound rollDie;
 	    
 	    public static void load(GLGame game) {
-	        background = new Texture(game, "background.png");
-	        backgroundRegion = new TextureRegion(background, 0, 0, 320, 480);
+	    	D4= new ArrayList<TextureRegion>();
+	    	mainMenuScreen = new Texture(game, "background.png");
+	    	mainMenuScreenRegion = new TextureRegion(mainMenuScreen, 0, 0, 320, 480);
 	        
+	    items = new Texture(game,"atlas.png");
+	    
+	    D4.add(new TextureRegion(items, 960, 0, 320, 480));
+	    D4.add(new TextureRegion(items, 640, 0, 320, 480));
+	    D4.add(new TextureRegion(items, 320, 0, 320, 480));
+	    D4.add(new TextureRegion(items, 0, 0, 320, 480));
+	    
+	    D4_anim= new Animation(1f, D4.get(0),D4.get(1), D4.get(2),D4.get(3));
+	    
 	       rollDie=game.getAudio().newSound("ShakeAndRollDice-SoundBible.com-591494296.mp3");
 	       shakeDie = game.getAudio().newSound("ShakeDice-SoundBible.com-1630587513.mp3");
 	       
 	    }       
 
 	    public static void reload() {
-	        background.reload();
+	    	mainMenuScreen.reload();
+	    	items.reload();
 
 	    }
 	    

@@ -110,8 +110,8 @@ public class MainMenuScreen extends GLScreen {
 	        
 	        gl.glEnable(GL10.GL_TEXTURE_2D);
 	        
-	        batcher.beginBatch(Assets.background);
-	        batcher.drawSprite(160, 240, 320, 480, Assets.backgroundRegion);
+	        batcher.beginBatch(Assets.mainMenuScreen);
+	        batcher.drawSprite(160, 240, 320, 480, Assets.mainMenuScreenRegion);
 	        batcher.endBatch();
 	        
 	        

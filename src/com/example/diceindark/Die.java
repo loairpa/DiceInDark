@@ -43,7 +43,7 @@ public class Die extends GameObject {
 	public void shake(){
 		Log.d("Die", "Shake");
 		hasResult=false;
-
+		
 	}
 	
 	public void thrown(){
