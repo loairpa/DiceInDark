@@ -46,10 +46,11 @@ public class DiceRender {
         
         batcher.beginBatch(Assets.items);
         Die die = dice.dice.get(dice.currentDie);
+        if(die.sides==4){
         switch(dice.state){
         case DiceScreen.DICE_READY:
         	direction=0;
-		   if(die.hasResult && die.sides==4)
+		   if(die.hasResult)
 			   batcher.drawSprite(die.position.x+4, die.position.y+7, FRUSTUM_WIDTH, FRUSTUM_HEIGHT, Assets.D4.get(die.result-1));
 		   else
 			   batcher.drawSprite(die.position.x+4, die.position.y+7,FRUSTUM_WIDTH,  FRUSTUM_HEIGHT, Assets.D4.get(0));
@@ -64,6 +65,9 @@ public class DiceRender {
 			 break;
 			   
         }
+        }
+        else
+			   batcher.drawSprite(die.position.x+4, die.position.y+7,FRUSTUM_WIDTH,  FRUSTUM_HEIGHT, Assets.D4.get(0));
         /*switch(dice.currentDie){
         case 0:
         	renderD4();
