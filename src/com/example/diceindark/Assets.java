@@ -40,11 +40,13 @@ public class Assets {
 	    public static List<TextureRegion> D8;
 	    public static List<TextureRegion> D10;
 	    public static List<TextureRegion> D12;
+	    public static List<TextureRegion> D20;
 	    public static Animation D4_anim;
 	    public static Animation D6_anim;
 	    public static Animation D8_anim;
 	    public static Animation D10_anim;
 	    public static Animation D12_anim;
+	    public static Animation D20_anim;
 	    public static Sound shakeDie;
 	    public static Sound rollDie;
 	    
@@ -54,69 +56,93 @@ public class Assets {
 	    	D8= new ArrayList<TextureRegion>();
 	    	D10=new ArrayList<TextureRegion>();
 	    	D12= new ArrayList<TextureRegion>();
+	    	D20= new ArrayList<TextureRegion>();
 	    	mainMenuScreen = new Texture(game, "background.png");
 	    	mainMenuScreenRegion = new TextureRegion(mainMenuScreen, 0, 0, 320, 480);
 	        
 	    items = new Texture(game,"atlas.png");
 	    
-	    D4.add(new TextureRegion(items, 960, 0, 320, 480));
-	    D4.add(new TextureRegion(items, 640, 0, 320, 480));
-	    D4.add(new TextureRegion(items, 320, 0, 320, 480));
-	    D4.add(new TextureRegion(items, 0, 0, 320, 480));
+	    D4.add(new TextureRegion(items, 320, 0, 160, 220));
+	    D4.add(new TextureRegion(items, 320, 0, 160, 220));
+	    D4.add(new TextureRegion(items, 160, 0, 160, 220));
+	    D4.add(new TextureRegion(items, 0, 0, 160, 220));
 	    
 	    D4_anim= new Animation(0.3f, D4.get(0),D4.get(1), D4.get(2),D4.get(3));
 	    
 
-	    D6.add(new TextureRegion(items, 1280+1600, 0, 320, 480));
-	    D6.add(new TextureRegion(items,1280+1280,0,320,480));
-	    D6.add(new TextureRegion(items, 1280+960, 0, 320, 480));
-	    D6.add(new TextureRegion(items, 1280+640, 0, 320, 480));
-	    D6.add(new TextureRegion(items, 1280+320, 0, 320, 480));
-	    D6.add(new TextureRegion(items,1280+0,0,320,480));
+	    D6.add(new TextureRegion(items, 645+800, 0, 160, 220));
+	    D6.add(new TextureRegion(items,645+640,0,160,220));
+	    D6.add(new TextureRegion(items, 645+480, 0, 160, 220));
+	    D6.add(new TextureRegion(items, 645+320, 0, 160, 220));
+	    D6.add(new TextureRegion(items, 645+160, 0, 160, 220));
+	    D6.add(new TextureRegion(items,645,0,160,220));
 	    
 	    D6_anim= new Animation(0.3f, D6.get(0),D6.get(1), D6.get(2),D6.get(3), D6.get(4),D6.get(5));
 	    
 
-	    D8.add(new TextureRegion(items, 2240, 480, 320, 480));
-	    D8.add(new TextureRegion(items,1920,480,320,480));
-	    D8.add(new TextureRegion(items, 1600, 480, 320, 480));
-	    D8.add(new TextureRegion(items,1280,480,320,480));
-	    D8.add(new TextureRegion(items, 960, 480, 320, 480));
-	    D8.add(new TextureRegion(items, 640, 480, 320, 480));
-	    D8.add(new TextureRegion(items, 320, 480, 320, 480));
-	    D8.add(new TextureRegion(items,0,480,320,480));
+	    D8.add(new TextureRegion(items, 1120, 220, 160, 220));
+	    D8.add(new TextureRegion(items,960,220,160,220));
+	    D8.add(new TextureRegion(items, 800, 220, 160, 220));
+	    D8.add(new TextureRegion(items,640,220,160,220));
+	    D8.add(new TextureRegion(items, 480, 220, 160, 220));
+	    D8.add(new TextureRegion(items, 320, 220, 160, 220));
+	    D8.add(new TextureRegion(items, 160, 220, 160, 220));
+	    D8.add(new TextureRegion(items,0,220,160,220));
 	    
 	    D8_anim= new Animation(0.3f, D8.get(0),D8.get(1), D8.get(2),D8.get(3), D8.get(4),D8.get(5),D8.get(6),D8.get(7));
 	    
 
-	    D10.add(new TextureRegion(items,0,960+480,320,480));
-	    D10.add(new TextureRegion(items, 320, 960+480, 320, 480));
-	    D10.add(new TextureRegion(items, 640, 960+480, 320, 480));
-	    D10.add(new TextureRegion(items, 960, 960+480, 320, 480));	
-	    D10.add(new TextureRegion(items,1280,960+480,320,480));
-	    D10.add(new TextureRegion(items, 1600, 960+480, 320, 480));
-	    D10.add(new TextureRegion(items,1920,960+480,320,480));
-	    D10.add(new TextureRegion(items, 2240, 960+480, 320, 480));
-	    D10.add(new TextureRegion(items,2560,960+480,320,480));
-	    D10.add(new TextureRegion(items, 2880, 960+480, 320, 480));
+	    D10.add(new TextureRegion(items,0,480+220,160,220));
+	    D10.add(new TextureRegion(items, 160, 480+220, 160, 220));
+	    D10.add(new TextureRegion(items, 320, 480+220, 160, 220));
+	    D10.add(new TextureRegion(items, 480, 480+220, 160, 220));	
+	    D10.add(new TextureRegion(items,640,480+220,160,220));
+	    D10.add(new TextureRegion(items, 800, 480+220, 160, 220));
+	    D10.add(new TextureRegion(items,960,480+220,160,220));
+	    D10.add(new TextureRegion(items, 1120, 480+220, 160, 220));
+	    D10.add(new TextureRegion(items,1280,480+220,160,220));
+	    D10.add(new TextureRegion(items, 1440, 480+220, 160, 220));
 	    D10_anim= new Animation(0.3f, D10.get(0),D10.get(1), D10.get(2),D10.get(3), D10.get(4),D10.get(5),D10.get(6),D10.get(7),D10.get(8),D10.get(9));
 	    
-	    D12.add(new TextureRegion(items, 2880, 960, 320, 480));
-	    D12.add(new TextureRegion(items,2560,960,320,480));
-	    D12.add(new TextureRegion(items, 2240, 960, 320, 480));
-	    D12.add(new TextureRegion(items,1920,960,320,480));
-	    D12.add(new TextureRegion(items, 1600, 960, 320, 480));
-	    D12.add(new TextureRegion(items,1280,960,320,480));
-	    D12.add(new TextureRegion(items, 960, 960, 320, 480));
-	    D12.add(new TextureRegion(items, 640, 960, 320, 480));
-	    D12.add(new TextureRegion(items, 320, 960, 320, 480));
-	    D12.add(new TextureRegion(items,0,960,320,480));
-	    D12.add(new TextureRegion(items, 2880, 480, 320, 480));
-	    D12.add(new TextureRegion(items,2560,480,320,480));
+	    D12.add(new TextureRegion(items, 1440, 480, 160, 220));
+	    D12.add(new TextureRegion(items,1280,480,160,220));
+	    D12.add(new TextureRegion(items, 1120, 480, 160, 220));
+	    D12.add(new TextureRegion(items,960,480,160,220));
+	    D12.add(new TextureRegion(items, 800, 480, 160, 220));
+	    D12.add(new TextureRegion(items,640,480,160,220));
+	    D12.add(new TextureRegion(items, 480, 480, 160, 220));
+	    D12.add(new TextureRegion(items, 320, 480, 160, 220));
+	    D12.add(new TextureRegion(items, 160, 480, 160, 220));
+	    D12.add(new TextureRegion(items,0,480,160,220));
+	    D12.add(new TextureRegion(items, 1440, 220, 160, 220));
+	    D12.add(new TextureRegion(items,1280,220,160,220));
 	    
 	    D12_anim= new Animation(0.3f, D12.get(0),D12.get(1), D12.get(2),D12.get(3), D12.get(4),D12.get(5),D12.get(6),D12.get(7),D12.get(8),D12.get(9),D12.get(10),D12.get(11));
-	       rollDie=game.getAudio().newSound("ShakeAndRollDice-SoundBible.com-591494296.mp3");
-	       shakeDie = game.getAudio().newSound("ShakeDice-SoundBible.com-1630587513.mp3");
+	    
+	    D20.add(new TextureRegion(items, 1440, 480+920+50, 160, 220));
+	    D20.add(new TextureRegion(items,1280,480+920+50,160,220));
+	    D20.add(new TextureRegion(items, 1120, 480+920+50, 160, 220));
+	    D20.add(new TextureRegion(items,960,480+920+50,160,220));
+	    D20.add(new TextureRegion(items, 800, 480+920+50, 160, 220));
+	    D20.add(new TextureRegion(items,640,480+920+50,160,220));
+	    D20.add(new TextureRegion(items, 480, 480+920+50, 160, 220));
+	    D20.add(new TextureRegion(items, 320, 480+920+50, 160, 220));
+	    D20.add(new TextureRegion(items, 160, 480+920+50, 160, 220));
+	    D20.add(new TextureRegion(items,0,480+700+50,160,220));
+	    D20.add(new TextureRegion(items, 1440, 480+700+40, 160, 220));
+	    D20.add(new TextureRegion(items,1280,480+700+40,160,220));
+	    D20.add(new TextureRegion(items, 1120, 480+700+40, 160, 220));
+	    D20.add(new TextureRegion(items,960,480+700+40,160,220));
+	    D20.add(new TextureRegion(items, 800, 480+700+40, 160, 220));
+	    D20.add(new TextureRegion(items,640,480+700+40,160,220));
+	    D20.add(new TextureRegion(items, 480, 480+700+40, 160, 220));
+	    D20.add(new TextureRegion(items, 320, 480+700+40, 160, 220));
+	    D20.add(new TextureRegion(items, 160, 480+700+40, 160, 220));
+	    D20.add(new TextureRegion(items,0,480+700+40,160,220));
+	    D20_anim= new Animation(0.3f, D20.get(0),D20.get(1), D20.get(2),D20.get(3), D20.get(4),D20.get(5),D20.get(6),D20.get(7),D20.get(8),D20.get(9),D20.get(10),D20.get(11), D20.get(12),D20.get(13), D20.get(14),D20.get(15),D20.get(16),D20.get(17),D20.get(18),D20.get(19));
+	    
+	    rollDie=game.getAudio().newSound("ShakeAndRollDice-SoundBible.com-591494296.mp3");
+	    shakeDie = game.getAudio().newSound("ShakeDice-SoundBible.com-1630587513.mp3");
 	       
 	    }       
 

@@ -36,6 +36,7 @@ public class DiceRender {
 		diceTexture.add(Assets.D8);
 		diceTexture.add(Assets.D10);
 		diceTexture.add(Assets.D12);
+		diceTexture.add(Assets.D20);
 
 		diceAnimation = new ArrayList<Animation>();
 		diceAnimation.add(Assets.D4_anim);
@@ -43,6 +44,7 @@ public class DiceRender {
 		diceAnimation.add(Assets.D8_anim);
 		diceAnimation.add(Assets.D10_anim);
 		diceAnimation.add(Assets.D12_anim);
+		diceAnimation.add(Assets.D20_anim);
 		
 		
 	}
@@ -64,13 +66,13 @@ public class DiceRender {
         batcher.beginBatch(Assets.items);
         Die die = dice.dice.get(dice.currentDie);
         TextureRegion keyFrame;
-        if(dice.currentDie<5){
+        if(dice.currentDie<dice.dice.size()-1){
  	   switch(dice.state){
         case DiceScreen.DICE_READY:
  		   if(die.hasResult)
- 			   batcher.drawSprite(die.position.x+4, die.position.y+7, FRUSTUM_WIDTH, FRUSTUM_HEIGHT, diceTexture.get(dice.currentDie).get(die.result-1));
+ 			   batcher.drawSprite(die.position.x+4, die.position.y+6, FRUSTUM_WIDTH, FRUSTUM_HEIGHT, diceTexture.get(dice.currentDie).get(die.result-1));
  		   else
- 			   batcher.drawSprite(die.position.x+4, die.position.y+7,FRUSTUM_WIDTH,  FRUSTUM_HEIGHT, diceTexture.get(dice.currentDie).get(0));
+ 			   batcher.drawSprite(die.position.x+4, die.position.y+6,FRUSTUM_WIDTH,  FRUSTUM_HEIGHT, diceTexture.get(dice.currentDie).get(0));
  		   break;
         case DiceScreen.DICE_SHAKING:
  			 keyFrame = diceAnimation.get(dice.currentDie).getKeyFrames(die.rand.nextFloat(), Animation.ANIMATION_LOOPING);		 
@@ -78,7 +80,7 @@ public class DiceRender {
  			 break;
  		 default:
  			 keyFrame = diceAnimation.get(dice.currentDie).getKeyFrames(die.rand.nextFloat(), Animation.ANIMATION_LOOPING);
- 			 batcher.drawSprite(die.position.x+4, die.position.y+7,FRUSTUM_WIDTH,  FRUSTUM_HEIGHT,keyFrame);
+ 			 batcher.drawSprite(die.position.x+4, die.position.y+6,FRUSTUM_WIDTH,  FRUSTUM_HEIGHT,keyFrame);
  			 break;
  			   
         }
