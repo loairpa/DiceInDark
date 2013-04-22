@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.diceindark"
+    package="com.plovergames.diceindark"
     android:versionCode="1"
-    android:versionName="alpha: 2013-04-21"
+    android:versionName="beta 1"
     android:installLocation="preferExternal" 
  >
     <uses-sdk
