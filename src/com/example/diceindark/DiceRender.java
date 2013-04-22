@@ -84,20 +84,42 @@ public class DiceRender {
  			 break;
  			   
         }
-        }else
-        	batcher.drawSprite(die.position.x+4, die.position.y+7,FRUSTUM_WIDTH,  FRUSTUM_HEIGHT, Assets.D4.get(0));
-       /* switch(die.sides){
-        case 4:
-        	renderD4(die);
-        	break;
-        case 6:
-        	renderD6(die);
-        	break;
-        default:
-        	batcher.drawSprite(die.position.x+4, die.position.y+7,FRUSTUM_WIDTH,  FRUSTUM_HEIGHT, Assets.D4.get(0));
-        	break;
-        	
-        }*/
+        }else{
+        	TextureRegion keyFrame2 ;
+        	switch(dice.state){
+            case DiceScreen.DICE_READY:
+     		   if(die.hasResult && die.result<100){
+     			   batcher.drawSprite(die.position.x+4, die.position.y+9, FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 
+     					   				Assets.D100.get((int)Math.floor(die.result/10)));
+     			   if(die.result%10>0)
+     			   batcher.drawSprite(die.position.x+4, die.position.y+3, FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 
+			   				Assets.D10.get((die.result)%10-1));
+     			   else
+        			   batcher.drawSprite(die.position.x+4, die.position.y+3, FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 
+   			   				Assets.D10.get(9));
+     		   }
+     		   else{
+     			   batcher.drawSprite(die.position.x+4, die.position.y+9,FRUSTUM_WIDTH/2,  FRUSTUM_HEIGHT/2, Assets.D100.get(0));
+     		   	   batcher.drawSprite(die.position.x+4, die.position.y+3,FRUSTUM_WIDTH/2,  FRUSTUM_HEIGHT/2, Assets.D10.get(0));
+     		   }
+     		   break;
+            case DiceScreen.DICE_SHAKING:
+            	keyFrame2 = Assets.D10_anim.getKeyFrames(die.rand.nextFloat(), Animation.ANIMATION_LOOPING); 
+     			 keyFrame = Assets.D100_anim.getKeyFrames(die.rand.nextFloat(), Animation.ANIMATION_LOOPING);		 
+     			 batcher.drawSprite(die.position.x+4, die.position.y+FRUSTUM_HEIGHT*die.rand.nextFloat(),FRUSTUM_WIDTH/2,  FRUSTUM_HEIGHT/2,keyFrame);
+     			batcher.drawSprite(die.position.x+4, die.position.y+FRUSTUM_HEIGHT*die.rand.nextFloat(),FRUSTUM_WIDTH/2,  FRUSTUM_HEIGHT/2,keyFrame2);
+     			 break;
+     		 default:
+     			keyFrame2 = Assets.D10_anim.getKeyFrames(die.rand.nextFloat(), Animation.ANIMATION_LOOPING); 
+     			 keyFrame = Assets.D100_anim.getKeyFrames(die.rand.nextFloat(), Animation.ANIMATION_LOOPING);
+     			 batcher.drawSprite(die.position.x+4, die.position.y+9,FRUSTUM_WIDTH/2,  FRUSTUM_HEIGHT/2,keyFrame);
+      			batcher.drawSprite(die.position.x+4, die.position.y+3,FRUSTUM_WIDTH/2,  FRUSTUM_HEIGHT/2,keyFrame2);
+
+     			 break;
+        	}
+        }
+
+
         
         batcher.endBatch();
         gl.glDisable(GL10.GL_BLEND);
