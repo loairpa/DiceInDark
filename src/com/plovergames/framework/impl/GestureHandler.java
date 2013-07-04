@@ -147,12 +147,24 @@ public class GestureHandler implements TouchHandler{
 	         Log.v(DEBUG_TAG, "onFling");
 	    	 GestureEvent event;
 	    	 event = handler.gestureEventPool.newObject();
-	    	 if(e1.getRawX()<e2.getRawX())
+	    	 float diffX =e1.getRawX()-e2.getRawX();
+	    	 float diffY =e1.getRawY()-e2.getRawY();
+	    	 if(Math.abs(diffX)>Math.abs(diffY)){
+	    	 if(diffX<0)
 	    		 event.type= GestureEvent.FLING_RIGHT;
 	    	 else 
 	    		 event.type = GestureEvent.FLING_LEFT;
 	    	 
-	    	 handler.gestureEventsBuffer.add(event);
+	    	
+	    	 }else{
+	    		 if(diffY<0)
+	    			 event.type=GestureEvent.SCROLL_UP;
+	    		 else
+	    			 event.type = GestureEvent.SCROLL_DOWN;
+	    				 
+	    	 }
+	    	 handler.gestureEventsBuffer.add(event);	 
+	    	 
 
 	         
 	         return true;
@@ -177,7 +189,16 @@ public class GestureHandler implements TouchHandler{
 	     public boolean onScroll(MotionEvent e1, MotionEvent e2,
 	             float distanceX, float distanceY) {
 	         Log.v(DEBUG_TAG, "onScroll");
-
+/*	    	 GestureEvent event;
+	    	 event = handler.gestureEventPool.newObject();
+	    	 float diff =e1.getRawY()-e2.getRawY();
+	    	 if(Math.abs(diff)>Math.abs(e1.getRawX()-e2.getRawX())){
+	    		 if(diff<0)
+	    			 event.type= GestureEvent.SCROLL_UP;
+	    		 else 
+	    			 event.type = GestureEvent.SCROLL_DOWN;
+	    		 handler.gestureEventsBuffer.add(event);
+	    	 }*/
 	         return false;
 	     }
 

@@ -70,6 +70,9 @@ public static class GestureEvent{
     public static final int DOUBLE_TAP = 1;
     public static final int FLING_LEFT = 2;
     public static final int FLING_RIGHT = 3;
+    public static final int SCROLL_UP = 4; 
+    public static final int SCROLL_DOWN =5;
+    
  
 
     public int type;
@@ -82,8 +85,10 @@ public static class GestureEvent{
             builder.append("single tap, ");
         else if (type == DOUBLE_TAP)
             builder.append("double tap ");
-        else
+        else if (type == FLING_RIGHT || type == FLING_LEFT)
             builder.append("FLING, ");
+        else 
+        	builder.append("scroll, ");
         builder.append(pointer);
         builder.append(",");
         builder.append(x);
