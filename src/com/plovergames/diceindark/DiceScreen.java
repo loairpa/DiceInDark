@@ -119,6 +119,8 @@ public class DiceScreen extends GLScreen {
 					if(dice.get(currentDie).sides!=100){
 						dice.get(currentDie).hasResult= false;
 						dice.get(currentDie).numberOfDice++;
+						if(dice.get(currentDie).numberOfDice>50)
+							dice.get(currentDie).numberOfDice=1;
 						game.getAudio().speakOut(""+dice.get(currentDie).numberOfDice+", "+dice.get(currentDie).name);
 					}
 				}

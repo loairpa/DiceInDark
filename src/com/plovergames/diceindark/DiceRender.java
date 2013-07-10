@@ -86,7 +86,7 @@ public class DiceRender {
 
 
 						int k =die.result[i];
-						while(k>0){
+						while(k>0 & j<die.numberOfDice){
 							result[j]=i;
 							j++;
 							k--;
