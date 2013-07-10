@@ -133,6 +133,7 @@ public class DiceScreen extends GLScreen {
 			return;
 
 		case DICE_SHAKING:
+			game.getInput().getGestureEvents();
 			if(Math.abs(accelX)>10 ||Math.abs(accelY)>10){
 				dice.get(currentDie).shake();
 				stateTime=0;
@@ -146,6 +147,7 @@ public class DiceScreen extends GLScreen {
 			return;
 
 		case DICE_THROW:
+			game.getInput().getGestureEvents();
 			if (stateTime >2f){
 				dice.get(currentDie).thrown();
 				speakResult();

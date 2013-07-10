@@ -83,10 +83,11 @@ public class DiceRender {
 					int [] result = new int[die.numberOfDice];
 					int j=0;
 					for(int i =0; i<die.sides;i++){
+
+
 						int k =die.result[i];
 						while(k>0){
 							result[j]=i;
-							Log.v("Result",""+result[j]);
 							j++;
 							k--;
 
@@ -100,7 +101,7 @@ public class DiceRender {
 						else batcher.drawSprite(die.position.x+W, die.position.y+(i%scaler)*FRUSTUM_HEIGHT/scaler, FRUSTUM_WIDTH/scaler, FRUSTUM_HEIGHT/scaler, diceTexture.get(dicescreen.currentDie).get(result[i-1]));
 
 						if(i%scaler ==0) W+=FRUSTUM_WIDTH/scaler;
-						Log.v("Die result", ""+die.result);
+//						Log.v("Die result", ""+result[i-1]);
 					}
 
 				}
@@ -133,7 +134,7 @@ public class DiceRender {
 					else batcher.drawSprite(die.position.x+W, die.position.y+(i%scaler)*FRUSTUM_HEIGHT/scaler, FRUSTUM_WIDTH/scaler, FRUSTUM_HEIGHT/scaler, keyFrame);
 
 					if(i%scaler ==0) W+=FRUSTUM_WIDTH/scaler;
-					Log.v("Die result", ""+die.result);
+//					Log.v("Die result", ""+die.result);
 				}
 				//				batcher.drawSprite(die.position.x+4, die.position.y+6,FRUSTUM_WIDTH,  FRUSTUM_HEIGHT,keyFrame);
 				break;

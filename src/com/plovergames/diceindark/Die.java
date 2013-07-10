@@ -56,13 +56,14 @@ public class Die extends GameObject {
 		//Log.d("Die","thrown");
 		//result=rand.nextInt(sides)+1;
 		int j= numberOfDice;
-		result[0]=rand.nextInt(j);
-		for(int i=1; i<sides-1; i++){
-			j-=result[i-1];
+//		result[0]=rand.nextInt(j);
+		for(int i=0; i<sides-1; i++){			
 			result[i] = rand.nextInt(j);
+			j-=result[i];
 			Log.v("Die result",""+result[i]);
 		}
 		result[sides-1]= j;
+		Log.v("Die result",""+result[sides-1]);
 		shuffleArray(result);
 		hasResult=true;
 
