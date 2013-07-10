@@ -21,9 +21,6 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.speech.tts.TextToSpeech;
-import android.util.Log;
-
 import com.plovergames.framework.Game;
 import com.plovergames.framework.Input.GestureEvent;
 import com.plovergames.framework.gl.Camera2D;

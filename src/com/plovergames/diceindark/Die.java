@@ -16,8 +16,6 @@
  */
 package com.plovergames.diceindark;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import android.util.Log;

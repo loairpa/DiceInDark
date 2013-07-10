@@ -19,7 +19,6 @@ package com.plovergames.framework.impl;
 import java.util.List;
 
 import android.content.Context;
-import android.os.Build.VERSION;
 import android.view.View;
 
 import com.plovergames.framework.Input;

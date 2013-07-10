@@ -97,7 +97,7 @@ public class MainMenuScreen extends GLScreen {
 
     private void updateHelp(){
   	  
-      game.getAudio().speakOut("Fling right or left to select die. Scroll up or down to increase or decrease number of dice. Shake to juggle die. " +
+      game.getAudio().speakOut("Fling right, or left to select die. Skrol up, or down to increase, or decrease number of dice. Shake to juggle die. " +
       		"Stop Shaking to roll die. Tap screen for repetition of result. Double tap for main menu ");
   	  state = GAME_RUNNING;
     }
