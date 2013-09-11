@@ -146,17 +146,23 @@ public class DiceRender {
 				int result =0;
 				if(die.hasResult){
 					int j=0;
-					while(result == 0){
-						if(die.result[j]>0) result=j;
+					while(result == 0 && j<die.sides){
+						if(die.result[j]>0) result=j+1;
 						j++;
+						
 					}
 				}
-				if(die.hasResult && result<100){
+				if(die.hasResult && result<=100){
+					if(result == 100)
+						batcher.drawSprite(die.position.x+4, die.position.y+9, FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 
+								Assets.D100.get(0));
+					else
 					batcher.drawSprite(die.position.x+4, die.position.y+9, FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 
-							Assets.D100.get((int)Math.floor(result/10)));
+							Assets.D100.get((int)result/10));
+					
 					if(result%10>0)
 						batcher.drawSprite(die.position.x+4, die.position.y+3, FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 
-								Assets.D10.get((result)%10));
+								Assets.D10.get(((result)%10)-1));
 					else
 						batcher.drawSprite(die.position.x+4, die.position.y+3, FRUSTUM_WIDTH/2, FRUSTUM_HEIGHT/2, 
 								Assets.D10.get(9));
