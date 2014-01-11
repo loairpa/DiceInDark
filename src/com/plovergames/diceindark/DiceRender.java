@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.util.Log;
-
 import com.plovergames.framework.gl.Animation;
 import com.plovergames.framework.gl.Camera2D;
 import com.plovergames.framework.gl.SpriteBatcher;

@@ -40,6 +40,7 @@ public class DiceScreen extends GLScreen {
 	List<Die> dice;
 	int state;
 	int currentDie =0;
+	boolean speakSum = false;
 	float stateTime=0;
 	private boolean initializing = true;
 	public DiceScreen( Game game) {
@@ -109,7 +110,8 @@ public class DiceScreen extends GLScreen {
 					if(dice.get(currentDie).numberOfDice>1)
 						game.getAudio().speakOut(dice.get(currentDie).name+"Number of Dice, "+dice.get(currentDie).numberOfDice);
 					if(dice.get(currentDie).hasResult)
-						speakResult();
+						speakResult(speakSum);
+						speakSum = !speakSum;
 				
 				}
 				if(event.type == GestureEvent.SCROLL_UP){
@@ -149,7 +151,8 @@ public class DiceScreen extends GLScreen {
 			game.getInput().getGestureEvents();
 			if (stateTime >2f){
 				dice.get(currentDie).thrown();
-				speakResult();
+				speakResult(speakSum);
+				speakSum = !speakSum;
 				//game.getAudio().speakOut("Result, "+dice.get(currentDie).result);
 				state = DICE_READY;
 			}
@@ -158,14 +161,28 @@ public class DiceScreen extends GLScreen {
 
 	}
 
-	private void speakResult(){
-		String speak = "Result, ";
-		for(int i =0; i<dice.get(currentDie).sides;i++){
-			if(dice.get(currentDie).result[i]!=0)
-				if(dice.get(currentDie).numberOfDice>1) speak+=dice.get(currentDie).result[i]+" of "+(i+1)+", ";
-				else speak +=(i+1);
+	private void speakResult(boolean speakSum){
+		String speak;
+		if (!speakSum){
+			speak = "Result, ";
+			for(int i =0; i<dice.get(currentDie).sides;i++){
+				if(dice.get(currentDie).result[i]!=0)
+					if(dice.get(currentDie).numberOfDice>1) speak+=dice.get(currentDie).result[i]+" of "+(i+1)+", ";
+					else speak +=(i+1);
 
+			}
+			
+		}else{
+			speak = "Sum, ";
+			int sum =0;
+			for(int i = 0;i<dice.get(currentDie).sides;i++ ){
+				if(dice.get(currentDie).result[i]!=0)
+					if(dice.get(currentDie).numberOfDice>1) sum+=dice.get(currentDie).result[i]*(i+1);
+					else sum+=(i+1);
+			}
+			speak+=""+sum;
 		}
+		
 		game.getAudio().speakOut(speak);
 	}
 
